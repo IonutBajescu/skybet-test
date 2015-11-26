@@ -6,11 +6,11 @@
 use App\Controllers\PeopleController;
 use App\Models\People;
 
-if ($_SERVER['REQUEST_URI'] == '/' && $_SERVER['REQUEST_METHOD'] == 'GET') {
+if ($_GET['action'] == 'people' && $_SERVER['REQUEST_METHOD'] == 'GET') {
     return (new PeopleController(new People))->showForm();
 }
 
 
-if ($_SERVER['REQUEST_URI'] == '/' && $_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_GET['action'] == 'people' && $_SERVER['REQUEST_METHOD'] == 'POST') {
     return (new PeopleController(new People))->submitForm();
 }

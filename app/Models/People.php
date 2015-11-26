@@ -5,7 +5,7 @@ namespace App\Models;
 /**
  * @package App\Models
  */
-class People
+class People implements \JsonSerializable
 {
     /**
      * @var array
@@ -43,7 +43,7 @@ class People
     public function save()
     {
         // No SQL escaping, this is JSON not MySQL.
-        file_put_contents($this->getFile(), json_encode($this->attributes));
+        file_put_contents($this->getFile(), json_encode($this));
     }
 
     /**
@@ -58,6 +58,19 @@ class People
      * @return array
      */
     public function getAttributes()
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @link  http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     *        which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    function jsonSerialize()
     {
         return $this->attributes;
     }

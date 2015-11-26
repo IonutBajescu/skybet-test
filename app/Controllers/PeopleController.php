@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\People;
 
-class PeopleController extends AbstractController
+class PeopleController
 {
     /**
      * @var People
@@ -19,14 +19,13 @@ class PeopleController extends AbstractController
 
     public function showForm()
     {
-        $form = $this->people->getAttributes();
-        return $this->view('form', compact('form'));
+        return json_encode($this->people);
     }
 
     public function submitForm()
     {
+        // The php://input trick wasn't used for backwards compatibility reasons.
         $this->people->fill($_POST['people'])->save();
-
-        return back();
+        return json_encode($this->people);
     }
 }

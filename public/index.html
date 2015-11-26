@@ -1,0 +1,40 @@
+<!-- This file is .html to ensure complete separation from the backend application. -->
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step 2</title>
+</head>
+<body>
+	<div id="app">
+		<form method="post" id="peopleForm">
+			<table>
+				<thead>
+				<tr>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Job Title</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr v-for="(k, person) in people">
+						<td><input type="text" v-model="people[k].firstname" /></td>
+						<td><input type="text" v-model="people[k].surname" /></td>
+						<td><input type="text" v-model="people[k].jobtitle" /></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<input v-on:click="submitPeople()" type="button" value="OK" />
+
+			{{saving ? 'Saving...' : ''}}
+			{{saved ? 'Saved!' : ''}}
+		</form>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.min.js"></script>
+	<script src="assets/js/home.js"></script>
+</body>
+</html>
