@@ -1,6 +1,6 @@
+
+
 // Being an angular guy, that's the first time I use Vue.js, yay!
-
-
 
 var vue = new Vue({
     el: '#app',
@@ -27,8 +27,3 @@ var vue = new Vue({
 });
 
 vue.fetchPeople();
-
-// given that we have no real javascript architecture, the javascript says in the presentation layer - where it belongs
-$('#peopleForm').submit(function() {
-
-});
